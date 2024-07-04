@@ -1,0 +1,15 @@
+form {
+  padding: 3;
+}
+
+.table-bordered {
+    border: 1px solid #000; /* Border color and width */
+    border-collapse: collapse; /* Collapse borders into a single border */
+}
+  
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #000; /* Border color and width for table cells */
+    padding: 5px;
+
+}

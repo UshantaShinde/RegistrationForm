@@ -1,0 +1,111 @@
+<form [formGroup]="registerForm" (ngSubmit)="registerSubmited()" class="border  border-light p-3 rounded-4">
+    <div class="row g-0">
+        <div class="col text-center p-2 mb-3 bg-light">
+            <span class="fs-3">Register</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- First Name-->
+        <div class="col mb-3">
+            <label for="firstname" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstname" formControlName="firstname"  >
+            <div class="form-text text-danger" *ngIf="FirstName.errors?.['required'] && FirstName.touched ">
+                First name is Required
+            </div>
+            <div class="form-text text-danger" *ngIf="FirstName.errors?.['pattern'] && FirstName.touched ">
+                *First name start with Alphabet
+            </div>
+        </div>
+
+        <!-- Last Name-->
+        <div class="col mb-3">
+            <label for="lastname" class="form-label">Last Name*</label>
+            <input type="text" class="form-control" id="lastname" formControlName="lastname"  >
+            <div class="form-text text-danger" *ngIf="LastName.errors?.['required'] && LastName.touched ">
+                *Last name is Required
+            </div>
+
+            <div class="form-text text-danger" *ngIf="LastName.errors?.['pattern'] && LastName.touched ">
+                *Last Name start with Alphabet
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 mb-3">
+            <!-- Email Address-->
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" formControlName="emailaddress">
+            <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched ">
+                *Email is Required
+            </div>
+            <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && Email.touched ">
+                *InValid Email Address
+            </div>
+            <div class="form-text"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Mobile Number-->
+        <div class="col mb-3">
+            <label for="mobile" class="form-label">Mobile Number*</label>
+            <input type="text" class="form-control" id="mobile" formControlName="mobilenumber">
+            <div class="form-text text-danger" *ngIf="MobileNumber.errors?.['required'] && MobileNumber.touched ">
+                *Number is Required
+            </div>
+            <div class="form-text text-danger" *ngIf="MobileNumber.errors?.['pattern'] && MobileNumber.touched">
+                *InValid MobileNumber
+            </div>
+            <div class="form-text text-danger" *ngIf="MobileNumber.errors?.['minlength'] && MobileNumber.touched">
+                *Number is Short
+            </div>
+            <div class="form-text text-danger" *ngIf="MobileNumber.errors?.['maxlength'] && MobileNumber.touched">
+                *Number is long
+            </div>
+
+        </div>
+        <!-- Gender buttons-->
+        <div class="col ps-3 mb-3">
+            <div class="m-1">Gender</div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" value="m" id="male" formControlName="gender">
+                <label class="form-check-label" for="male">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" value="f" id="female" formControlName="gender">
+                <label class="form-check-label" for="female">Female</label>
+            </div>
+        </div>
+    </div>
+    <!--Password-->
+    <div class="row">
+        <!-- Password-->
+        <div class="col mb-3">
+            <label for="pwd" class="form-label">Password*</label>
+            <input type="password" class="form-control" id="Pwd" formControlName="pwd">
+            <div class="form-text text-danger" *ngIf="Password.errors?.['required'] && Password.touched ">
+                *Password is Required
+            </div>
+            <div class="form-text text-danger" *ngIf="Password.errors?.['minlength'] || Password.errors?.['maxlength'] && 
+            Password.touched">*Password should be at least minimum 6 and maximum 15 character
+            </div>
+        </div>
+
+        <!-- Confirm Password-->
+        <div class="col mb-3">
+            <label for="rpwd" class="form-label">Confirm Passowrd</label>
+            <input type="password" class="form-control" id="rpwd" formControlName="rpwd">
+            <div class="form-text text-danger" [ngStyle]="{'display':repeatPass}" > Confirm Password is InValid</div>
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="d-grid">
+                <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary"> Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
